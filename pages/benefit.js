@@ -8,20 +8,17 @@ export default function benefit({ benefitInfo,mode }) {
     return (
       <main className={`${styles.main}`}>
         <div className={`${styles.titel}`}>
-          <Text b size="26px" color="#565565">〇〇市</Text>
+          <Text b size="26px" color="#565565">江戸川区</Text>
         </div>
         <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">〇〇・✕✕・△△等</Text>
-        </div>
-        <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">価格高騰重点支援給付金</Text>
+         <Text b size="26px" color="#565565">給付金</Text>
         </div>
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>
         <Card css={{ mt: "36px", mw: "400px", bg: "aliceblue" }}>
           <Card.Header>
-            <Text b size="$xl" color="#565565">申請書番号：{benefitInfo.benefit_code}</Text>
+            <Text b size="$xl" color="#565565">給付申請書番号：{benefitInfo.benefit_code}</Text>
             {/* <Text b size="$xl" color="#565565">お問い合わせ番号：{benefitInfo.benefit_code}</Text> */}
           </Card.Header>
           <Card.Divider />
@@ -66,26 +63,23 @@ export default function benefit({ benefitInfo,mode }) {
     return(
       <main className={`${styles.main}`}>
         <div className={`${styles.titel}`}>
-          <Text b size="26px" color="#565565">〇〇市</Text>
+          <Text b size="26px" color="#565565">江戸川区</Text>
         </div>
         <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">〇〇・✕✕・△△等</Text>
-        </div>
-        <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">価格高騰重点支援給付金</Text>
+         <Text b size="26px" color="#565565">給付金</Text>
         </div>
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>
         <Card css={{mt: "36px", mw: "400px", bg: "aliceblue" }}>
           <Card.Header>
-            <Text b size="$xl" color="#565565">申請書番号：{benefitInfo.benefit_code}</Text>
+            <Text b size="$xl" color="#565565">給付申請書番号：{benefitInfo.benefit_code}</Text>
           </Card.Header>
           <Card.Divider />
           <Card.Body>
             <Text b size="$xl" color="#565565">対象の給付申請が見つかりませんでした。</Text>
             {/* <Text b size="$xl" color="#565565">再度番号をご確認の上、照会を行ってください。</Text> */}
-            <Text b size="$xl" color="#565565">申請書番号をご確認の上、照会を行ってください。</Text>
+            <Text b size="$xl" color="#565565">給付申請書番号をご確認の上、照会を行ってください。</Text>
           </Card.Body>
           <Card.Footer>
           <Row justify="flex-end">

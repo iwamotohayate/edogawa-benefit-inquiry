@@ -15,20 +15,20 @@ export default function Home({ }) {
           <Text b size="26px" color="#565565">江戸川区</Text>
         </div>
         <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">住民税非課税世帯等給付金</Text>
+         <Text b size="26px" color="#565565">給付金</Text>
         </div>
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>
       <Card css={{ mt: "36px", mw: "400px", bg: "aliceblue" }}>
         <Card.Body>
-          <Text b size="18px" color="#565565">申請書番号（15桁・半角）を入力し</Text>
+          <Text b size="18px" color="#565565">給付申請書番号（15桁・半角）を入力し</Text>
           <Text b size="18px" color="#565565">「照会」ボタンをクリックして下さい。</Text>
           <div className={styles.search}>
             <Input
               clearable
               underlined
-              labelPlaceholder="申請書番号"
+              labelPlaceholder="給付申請書番号"
               initialValue=""
               onChange={
                 (e) => setBenefitCode(e.target.value)
