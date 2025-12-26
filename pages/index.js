@@ -12,11 +12,11 @@ export default function Home({ }) {
   return (
     <main className={`${styles.main}`}>
         <div className={`${styles.titel}`}>
-          <Text b size="26px" color="#565565">江戸川区</Text>
+          <Text b size="26px" color="#565565">江戸川区給付金</Text>
         </div>
-        <div className={`${styles.titel}`}>
-         <Text b size="26px" color="#565565">給付金</Text>
-        </div>
+        {/* <div className={`${styles.titel}`}>
+         <Text b size="26px" color="#565565"></Text>
+        </div> */}
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>

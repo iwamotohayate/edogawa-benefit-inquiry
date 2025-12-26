@@ -8,11 +8,11 @@ export default function benefit({ benefitInfo,mode }) {
     return (
       <main className={`${styles.main}`}>
         <div className={`${styles.titel}`}>
-          <Text b size="26px" color="#565565">江戸川区</Text>
+          <Text b size="26px" color="#565565">江戸川区給付金</Text>
         </div>
-        <div className={`${styles.titel}`}>
+        {/* <div className={`${styles.titel}`}>
          <Text b size="26px" color="#565565">給付金</Text>
-        </div>
+        </div> */}
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>
@@ -63,11 +63,11 @@ export default function benefit({ benefitInfo,mode }) {
     return(
       <main className={`${styles.main}`}>
         <div className={`${styles.titel}`}>
-          <Text b size="26px" color="#565565">江戸川区</Text>
+          <Text b size="26px" color="#565565">江戸川区給付金</Text>
         </div>
-        <div className={`${styles.titel}`}>
+        {/* <div className={`${styles.titel}`}>
          <Text b size="26px" color="#565565">給付金</Text>
-        </div>
+        </div> */}
         <div className={`${styles.titel}`}>
          <Text b size="26px" color="#6a5acd" >【受付状況確認】</Text>
         </div>
@@ -152,15 +152,15 @@ export const getServerSideProps = async (context) => {
   const res = await searchBenefit(benefitcode);
   if (res.Item) {
     if (res.Item.status === "未処理") {
-      res.Item.message1 = "〇〇市にてお振込みの準備をしております。"
-      res.Item.message2 = "お振込みまで、概ね2週間のお時間をいただいています。"
-      res.Item.message3 = "しばらくお待ちください。"
+      res.Item.message1 = "書類をご確認いただき、〇月✕日の申請期限までに、申請をお願いいたします。"
+      res.Item.message2 = ""
+      res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
       res.Item.transfer_scheduled_date = ""
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "不着") {
-      res.Item.message1 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
+      res.Item.message1 = "書類をご確認いただき、〇月✕日の申請期限までに、申請をお願いいたします。"
       res.Item.message2 = ""
       res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
@@ -168,77 +168,77 @@ export const getServerSideProps = async (context) => {
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "受付済") {
-      res.Item.message1 = "〇〇市にてお振込みの手続き中です。"
-      res.Item.message2 = "お振込みまで、概ね2週間のお時間をいただいています。"
-      res.Item.message3 = "しばらくお待ちください。"
+      res.Item.message1 = "申請を受け付けました。審査完了までしばらくお待ちください。"
+      res.Item.message2 = ""
+      res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
       res.Item.transfer_scheduled_date = ""
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "内容確認中") {
-        res.Item.message1 = "〇〇市にてお振込みの手続き中です。"
-        res.Item.message2 = "お振込みまで、概ね2週間のお時間をいただいています。"
-        res.Item.message3 = "しばらくお待ちください。"
+        res.Item.message1 = "書類を確認中です。審査完了までしばらくお待ちください。"
+        res.Item.message2 = ""
+        res.Item.message3 = ""
         // 入金予定日・入金日を表示しない
         res.Item.transfer_scheduled_date = ""
         res.Item.transfer_date = ""
       }
-      if (res.Item.status === "不備連絡中") {
-          res.Item.message1 = "〇〇市にて手続きを進めておりますが、お送りいただいた内容に不備がございます。"
-          res.Item.message2 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
-          res.Item.message3 = ""
-          // 入金予定日・入金日を表示しない
-          res.Item.transfer_scheduled_date = ""
-          res.Item.transfer_date = ""
-        }
-        if (res.Item.status === "承認待ち") {
-          res.Item.message1 = "〇〇市にてお振込みの手続き中です。"
-          res.Item.message2 = "お振込みまで、概ね2週間のお時間をいただいています。"
-          res.Item.message3 = "しばらくお待ちください。"
-          // 入金予定日・入金日を表示しない
-          res.Item.transfer_scheduled_date = ""
-          res.Item.transfer_date = ""
-        }
-        if (res.Item.status === "不支給承認待ち") {
-          res.Item.message1 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
-          res.Item.message2 = ""
-          res.Item.message3 = ""
-          // 入金予定日・入金日を表示しない
-          res.Item.transfer_scheduled_date = ""
-          res.Item.transfer_date = ""
-        }
-        if (res.Item.status === "入金作成待ち") {
-          res.Item.message1 = "〇〇市にてお振込みの手続き中です。"
-          res.Item.message2 = "お振込みまで、概ね2週間のお時間をいただいています。"
-          res.Item.message3 = "しばらくお待ちください。"
-          // 入金予定日・入金日を表示しない
-          res.Item.transfer_scheduled_date = ""
-          res.Item.transfer_date = ""
-        }
-        if (res.Item.status === "入金エラー") {
-          res.Item.message1 = "〇〇市にてお振込みいたしましたが、ご指定の口座にお振込みできませんでした。"
-          res.Item.message2 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
-          res.Item.message3 = ""
-          // 入金予定日・入金日を表示しない
-          res.Item.transfer_scheduled_date = ""
-          res.Item.transfer_date = ""
-        }
-        if (res.Item.status === "入金作成済み") {
-          res.Item.message1 = "〇〇市にてお振込みの準備ができました。"
-        res.Item.message2 = "お振込み日以降にご指定いただいた口座をご確認ください。"
+    if (res.Item.status === "不備連絡中") {
+        res.Item.message1 = "手続きを進めておりますが、お送りいただいた内容に不備がございます。"
+        res.Item.message2 = "不備通知をお送りしますので、手紙の内容を確認し、お手続きをお願いいたします。"
         res.Item.message3 = ""
-        // 入金日を表示しない
+        // 入金予定日・入金日を表示しない
+        res.Item.transfer_scheduled_date = ""
         res.Item.transfer_date = ""
-      }
+    }
+    if (res.Item.status === "承認待ち") {
+      res.Item.message1 = "書類を確認中です。審査完了までしばらくお待ちください。"
+      res.Item.message2 = ""
+      res.Item.message3 = ""
+      // 入金予定日・入金日を表示しない
+      res.Item.transfer_scheduled_date = ""
+      res.Item.transfer_date = ""
+    }
+    if (res.Item.status === "不支給承認待ち") {
+      res.Item.message1 = "書類を確認中です。審査完了までしばらくお待ちください。"
+      res.Item.message2 = ""
+      res.Item.message3 = ""
+      // 入金予定日・入金日を表示しない
+      res.Item.transfer_scheduled_date = ""
+      res.Item.transfer_date = ""
+    }
+    if (res.Item.status === "入金作成待ち") {
+      res.Item.message1 = "お振込みの手続き中です。お振込みまで、しばらくお待ちください。"
+      res.Item.message2 = ""
+      res.Item.message3 = ""
+      // 入金予定日・入金日を表示しない
+      res.Item.transfer_scheduled_date = ""
+      res.Item.transfer_date = ""
+    }
+    if (res.Item.status === "入金エラー") {
+      res.Item.message1 = "お振込みいたしましたが、ご指定の口座にお振込みできませんでした。"
+      res.Item.message2 = "不備通知をお送りしますので、手紙の内容を確認し、お手続きをお願いいたします。"
+      res.Item.message3 = ""
+      // 入金予定日・入金日を表示しない
+      res.Item.transfer_scheduled_date = ""
+      res.Item.transfer_date = ""
+    }
+    if (res.Item.status === "入金作成済み") {
+      res.Item.message1 = "お振込みの準備ができました。"
+      res.Item.message2 = "お振込み日以降にご指定いただいた口座をご確認ください。"
+      res.Item.message3 = ""
+      // 入金日を表示しない
+      res.Item.transfer_date = ""
+    }
       if (res.Item.status === "決定通知済み") {
-        res.Item.message1 = "〇〇市にてお振込みの準備ができました。"
+        res.Item.message1 = "お振込みの準備ができました。"
         res.Item.message2 = "お振込み日以降にご指定いただいた口座をご確認ください。"
         res.Item.message3 = ""
         // 入金日を表示しない
         res.Item.transfer_date = ""
       }
       if (res.Item.status === "キャンセル") {
-        res.Item.message1 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
+        res.Item.message1 = "申請を無効にしました。詳細はコールセンターにお問い合わせください。"
         res.Item.message2 = ""
         res.Item.message3 = ""
         // 入金予定日・入金日を表示しない
@@ -246,7 +246,7 @@ export const getServerSideProps = async (context) => {
         res.Item.transfer_date = ""
       }
       if (res.Item.status === "不支給") {
-        res.Item.message1 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
+        res.Item.message1 = "書類を確認中です。審査完了までしばらくお待ちください。"
         res.Item.message2 = ""
         res.Item.message3 = ""
         // 入金予定日・入金日を表示しない
@@ -254,7 +254,7 @@ export const getServerSideProps = async (context) => {
         res.Item.transfer_date = ""
       }
       if (res.Item.status === "不支給完了") {
-        res.Item.message1 = "コールセンター（XXX-XXX-XXX）にご連絡ください。"
+        res.Item.message1 = "審査の結果、本支給の支給対象外となりましたので、通知をお送りいたします。"
         res.Item.message2 = ""
         res.Item.message3 = ""
         // 入金予定日・入金日を表示しない
@@ -262,7 +262,7 @@ export const getServerSideProps = async (context) => {
         res.Item.transfer_date = ""
       }
       if (res.Item.status === "入金完了") {
-        res.Item.message1 = "〇〇市にてお振込みいたしました。"
+        res.Item.message1 = "お振込手続きが完了しました。"
         res.Item.message2 = "ご指定いただいた口座をご確認ください。"
         res.Item.message3 = ""
         // 入金予定日を表示しない
