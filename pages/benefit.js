@@ -152,16 +152,16 @@ export const getServerSideProps = async (context) => {
   const res = await searchBenefit(benefitcode);
   if (res.Item) {
     if (res.Item.status === "未処理") {
-      res.Item.message1 = "書類をご確認いただき、1月13日の申請期限までに、申請をお願いいたします。"
-      res.Item.message2 = ""
+      res.Item.message1 = "お手元に届いた書類をご確認いただき、記載の口座への振り込みに問題がなければお手続きは不要です。"
+      res.Item.message2 = "振込先口座の変更をしたい場合は、通知に記載の期限までに口座変更のお手続きをしてください。"
       res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
       res.Item.transfer_scheduled_date = ""
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "不着") {
-      res.Item.message1 = "書類をご確認いただき、1月13日の申請期限までに、申請をお願いいたします。"
-      res.Item.message2 = ""
+      res.Item.message1 = "お手元に届いた書類をご確認いただき、記載の口座への振り込みに問題がなければお手続きは不要です。"
+      res.Item.message2 = "振込先口座の変更をしたい場合は、通知に記載の期限までに口座変更のお手続きをしてください。"
       res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
       res.Item.transfer_scheduled_date = ""
