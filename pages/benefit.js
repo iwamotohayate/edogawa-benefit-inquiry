@@ -152,7 +152,7 @@ export const getServerSideProps = async (context) => {
   const res = await searchBenefit(benefitcode);
   if (res.Item) {
     if (res.Item.status === "未処理") {
-      res.Item.message1 = "書類をご確認いただき、〇月✕日の申請期限までに、申請をお願いいたします。"
+      res.Item.message1 = "書類をご確認いただき、1月13日の申請期限までに、申請をお願いいたします。"
       res.Item.message2 = ""
       res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
@@ -160,7 +160,7 @@ export const getServerSideProps = async (context) => {
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "不着") {
-      res.Item.message1 = "書類をご確認いただき、〇月✕日の申請期限までに、申請をお願いいたします。"
+      res.Item.message1 = "書類をご確認いただき、1月13日の申請期限までに、申請をお願いいたします。"
       res.Item.message2 = ""
       res.Item.message3 = ""
       // 入金予定日・入金日を表示しない
