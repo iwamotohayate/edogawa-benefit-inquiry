@@ -152,12 +152,21 @@ export const getServerSideProps = async (context) => {
   const res = await searchBenefit(benefitcode);
   if (res.Item) {
     if (res.Item.status === "未処理") {
-      res.Item.message1 = "お手元に届いた書類をご確認いただき、記載の口座への振り込みに問題がなければお手続きは不要です。"
-      res.Item.message2 = "振込先口座の変更をしたい場合は、通知に記載の期限までに口座変更のお手続きをしてください。"
-      res.Item.message3 = ""
-      // 入金予定日・入金日を表示しない
-      res.Item.transfer_scheduled_date = ""
-      res.Item.transfer_date = ""
+      if (res.Item.memo_ten.includes("プッシュ")) {
+        res.Item.message1 = "お手元に届いた書類をご確認いただき、記載の口座への振り込みに問題がなければお手続きは不要です。"
+        res.Item.message2 = "振込先口座の変更をしたい場合は、通知に記載の期限までに口座変更のお手続きをしてください。"
+        res.Item.message3 = ""
+        // 入金予定日・入金日を表示しない
+        res.Item.transfer_scheduled_date = ""
+        res.Item.transfer_date = ""
+      }else{
+        res.Item.message1 = "お手続きが完了していません。5月29日の申請期限までに、申請をお願いいたします。"
+        res.Item.message2 = ""
+        res.Item.message3 = ""
+        // 入金予定日・入金日を表示しない
+        res.Item.transfer_scheduled_date = ""
+        res.Item.transfer_date = ""
+      }
     }
     if (res.Item.status === "不着") {
       res.Item.message1 = "お手元に届いた書類をご確認いただき、記載の口座への振り込みに問題がなければお手続きは不要です。"
@@ -224,11 +233,20 @@ export const getServerSideProps = async (context) => {
       res.Item.transfer_date = ""
     }
     if (res.Item.status === "入金作成済み") {
-      res.Item.message1 = "お振込みの準備ができました。"
-      res.Item.message2 = "お振込み日以降にご指定いただいた口座をご確認ください。"
-      res.Item.message3 = ""
-      // 入金日を表示しない
-      res.Item.transfer_date = ""
+      if(res.Item.receipt_atm === "true"){
+        res.Item.message1 = "ATM受取用の通知を発送します。"
+        res.Item.message2 = "お手元に通知が届き次第、お早めにATMでの受取をお願いします。"
+        res.Item.message3 = ""
+        // 入金予定日・入金日を表示しない
+        res.Item.transfer_scheduled_date = ""
+        res.Item.transfer_date = ""
+      }else{
+        res.Item.message1 = "お振込みの準備ができました。"
+        res.Item.message2 = "お振込み日以降にご指定いただいた口座をご確認ください。"
+        res.Item.message3 = ""
+        // 入金日を表示しない
+        res.Item.transfer_date = ""
+      }
     }
       if (res.Item.status === "決定通知済み") {
         res.Item.message1 = "お振込みの準備ができました。"
@@ -262,11 +280,20 @@ export const getServerSideProps = async (context) => {
         res.Item.transfer_date = ""
       }
       if (res.Item.status === "入金完了") {
-        res.Item.message1 = "お振込手続きが完了しました。"
-        res.Item.message2 = "ご指定いただいた口座をご確認ください。"
-        res.Item.message3 = ""
-        // 入金予定日を表示しない
-        res.Item.transfer_scheduled_date = ""
+        if(res.Item.receipt_atm === "true"){
+          res.Item.message1 = "セブン銀行ATMでの受取が完了しています。"
+          res.Item.message2 = ""
+          res.Item.message3 = ""
+          // 入金予定日・入金日を表示しない
+          res.Item.transfer_scheduled_date = ""
+          res.Item.transfer_date = ""
+        }else{
+          res.Item.message1 = "お振込手続きが完了しました。"
+          res.Item.message2 = "ご指定いただいた口座をご確認ください。"
+          res.Item.message3 = ""
+          // 入金予定日を表示しない
+          res.Item.transfer_scheduled_date = ""
+        }
       }
       //ステータスにかかわらず緊急停止ONの場合優先される
       // if(res.Item.emergency_stop === "true"){
